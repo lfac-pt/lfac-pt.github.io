@@ -137,7 +137,11 @@ p + p {
     text-align: left;
 }
 
-
+footer {
+    margin-top: 5em;
+    color: grey;
+    font-size: 0.5em;
+}
 
 
 
