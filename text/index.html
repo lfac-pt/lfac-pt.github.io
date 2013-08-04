@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Text Pad</title>
+<link rel="stylesheet" type="text/css" href="normalize.css">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,600' rel='stylesheet' type='text/css'>
+<style type="text/css">
+	html, body {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.text, .textPreview {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		font-size: 45px;
+		color: white;
+		font-family: 'Josefin Slab', serif;
+		background: none;
+		width: 80%;
+	}
+	.text {
+		resize: none;
+        display: none;
+        border-color: white;
+	}
+</style>
+</head>
+<body>
+  <canvas width="200px" width="200px"></canvas>
+  <textarea class="text mousetrap">Bob!</textarea>
+  <div class="textPreview"></div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="mousetrap.min.js"></script>
+  <script src="underscore.js"></script>
+  <script src="markdown-js-0.5.0/lib/markdown.js"></script>
+  <script>
+  /*
+	- When in preview mode, if any key is pressed go to edit mode
+	- Add a clone() function to the global scope (hum, how to handle only having one domain?)
+	- Change the page title to the first words of the text
+	- Make de favicon change color?
+	- Arranjar um parser markdown github flavor (https://github.com/chjj/marked)
+	- Enforce the text area borders whiteness
+	- Adjust when the window size changes
+  */
+
+  	var canvas, context, width, height, $text, $textPreview;
+
+	width = $("body").width();
+	height = $("body").height();
+	$("canvas").prop("width", width);
+	$("canvas").prop("height", height);
+
+	$text = $(".text");
+	$textPreview = $(".textPreview");
+
+	canvas = document.querySelector("canvas");
+	context = canvas.getContext("2d");
+	requestAnimationFrame(render);
+
+	var start = performance.now();
+
+	function rgb (r, g, b) {
+	  return "rgb(" + r + "," + g + "," + b + ")";
+	}
+
+	var way = true;
+
+	function render (timestamp) {
+	  var delta;
+	  
+	  delta = Math.floor((Math.sin((timestamp - start) / 1000) + 1) / 2 * 255);
+	  
+	  context.fillStyle = rgb(133, 200, delta);
+	  context.fillRect(0, 0, width, height);
+	  
+	  requestAnimationFrame(render);
+	}
+
+	function adjustTextPosition (ev) {
+		var textWidth, textHeight;
+
+		if ($text.is(":visible") !== true) {
+			return;
+		}
+
+		$text.height($text.val().split("\n").length * 53); //53 is the line height
+
+		textWidth = $text.width();
+		textHeight = $text.height();
+
+		if (textHeight > height || textWidth > width) {
+			if (ev instanceof $.Event) {
+				ev.preventDefault();
+			}
+		}
+
+		$text.css({
+			"margin-left" : -(textWidth / 2) - 3, //The -3 is to compensate of the textarea border
+			"margin-top" : -(textHeight / 2) - 3
+		});
+	}
+	function adjustTextPreviewPosition (ev) {
+		var textWidth, textHeight;
+
+		textWidth = $textPreview.width();
+		textHeight = $textPreview.height();
+
+		if (textHeight > height || textWidth > width) {
+			if (ev instanceof $.Event) {
+				ev.preventDefault();
+			}
+		}
+
+		$textPreview.css({
+			"margin-left" : -(textWidth / 2),
+			"margin-top" : -(textHeight / 2)
+		});
+	}
+
+	function changeTextTo (text, doFocus) {
+		if (typeof text === "string") {
+			$text.val(text);
+			if (doFocus) {
+				$text.focus();
+			}
+		}
+		adjustTextPosition();
+		localStorage.setItem("text-pad", $text.val());
+	}
+
+	changeTextTo(localStorage.getItem("text-pad"), true);
+	showPreview();
+
+	$text.on("input", changeTextTo);
+	$("canvas").on("click", function() {
+		if ($text.val().length === 0) {
+			changeTextTo("Here!", true);
+		}
+		showPreview();
+	});
+
+	Mousetrap.bind('command+enter', function(e) {
+	    tryToRun();
+	    return false;
+	});
+	Mousetrap.bind('ctrl+enter', function(e) {
+		tryToRun();	    
+	    return false;
+	});
+	Mousetrap.bind('esc', function(e) {
+		showPreview();	    
+	    return false;
+	});
+
+	function tryToRun () {
+		var code, result;
+
+		code = $text.val();
+
+		try {
+			result = eval(code);
+		} catch (e) {
+			console.error(e.stack);
+			result = "Opps :(";
+		}
+
+		changeTextTo($text.val() + _.escape(" == " + result));
+	}
+
+	function showPreview () {
+		$text.hide();
+		$textPreview.html(markdown.toHTML($text.val())).show();
+		adjustTextPreviewPosition();
+	}
+
+	$text.on("focusout", showPreview);
+
+	$text.on("focusin", function() {
+		$textPreview.hide();
+		$text.show();
+	});
+
+	function showEditor () {
+		$textPreview.hide();
+		$text.show().focus();
+		adjustTextPosition();
+	}
+
+	$textPreview.click(showEditor);
+  </script>
+</body>
+</html>
