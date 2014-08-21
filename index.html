@@ -9,28 +9,31 @@
 
         <style type="text/css">
             body {
-              font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+              font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
               text-align: center;
-              color: #444;
+              color: rgb(3, 18, 20);
               font-size: 24px;
               line-height: 1.3;
+              font-weight: normal;
             }
 
             h1, h2, h3{
               font-weight: normal;
-              font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
+			  font-size: 80px;
+			  text-align: center;
             }
 
             a {
-              color: #444;
+              color: rgb(16, 80, 87);
             }
 
             a:visited {
-              color: #444;
+              color: rgb(10, 50, 54);
             }
 
             a:hover {
-              color: #000;
+              color: rgb(12, 225, 245);
+              /*TODO: add an on hover color animation*/
             }
 
             p {
@@ -39,29 +42,43 @@
 
             p + p {
                 text-indent:1.3em;
-                margin-top: 0; 
+                margin-top: 1.3em;
             }
 
             .main {
+              /*TODO: improve on the side appears in the iPhone*/
                 width: 29em;
                 display: inline-block;
                 text-align: left;
             }
 
-            footer {
-                margin-top: 5em;
-                margin-bottom: 1em;
-                color: grey;
-                font-size: 0.5em;
+            .firstLetter {
+            	font-size: 80px;
+				padding-right: 10px;
+				border-bottom: solid black 2px;
+				border-top: solid black 2px;
+				padding-left: 10px;
             }
+
+            footer {
+				font-family: Verdana, sans-serif;
+                margin-top: 5em;
+                margin-bottom: 5em;
+                color: grey;
+                font-size: 0.4em;
+            }
+
+			footer .heart {
+				color: red;
+			}
         </style>
     </head>
     <body>
         <div class="main">
-            <h1>Hi stranger!</h1>
+            <h1>Hello stranger!</h1>
 
-            <p>This is my, mostly empty, personal homepage. Less is more FTW, am I right?</p>
-            <p>Well you probably came here looking for something, so here are some links:</p>
+            <p><span class="firstLetter">T</span><span id="x1">h</span>is is my, mostly empty, personal homepage.</p>
+            <p style="margin-top: 0.5em;">W<span id="x2">e</span>ll you probably came here looking for something, so here are some links:</p>
             <p>
                 <ul>
                     <li><a href="https://github.com/lfac-pt">Github</a></li>
@@ -69,14 +86,15 @@
                     <li><a href="http://pt.linkedin.com/in/lfacc">Linkedin</a></li>
                 </ul>
             </p>
-            <p>Not satisfied yet? What more can I say? What I do for a living? Hum, I suppose thats a good start.</p>
+            <p>Also, I ocasionally take some (amateur) photos, you can check them <span id="y1">o</span>ut in my <a href="http://lfac.vsco.co/">VSCO stream</a>.</p>
+            <p>N<span id="y2">o</span>t satisfied yet? What more can I say? What I do for a living? Hum, I suppose thats a good start.</p>
             <p>I'm a front-end &amp; JavaScript developer at <a href="http://www.feedzai.com/">FeedZai</a>, where I'm helping to build a quite large single page web application that is the face of our product.</p>
             <p>Also, I'm quite a fan of reading spy thrillers, going to the movies, and... Wait, I shouldn't be disclosing personal information to strangers!</p>
             <p>Are you trying to guess the answer to my secret question to access one of my accounts? STOP IT! You are not going to guess it anyways (random char string, FYI) so good luck with that.</p>
         </div>
 
         <footer>
-            &copy; Luís Cardoso 2013
+            Made in Portugal with <span class="heart">♥</span> by me. Last updated at August 2014.
         </footer>
 
         <script>
