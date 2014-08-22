@@ -12,25 +12,23 @@
               font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
               text-align: center;
               color: rgb(3, 18, 20);
-              font-size: 24px;
+              font-size: 30px;
               line-height: 1.3;
               font-weight: normal;
             }
 
             h1, h2, h3{
               font-weight: normal;
-			  font-size: 80px;
+			  font-size: 4em;
 			  text-align: center;
             }
 
             a {
               color: rgb(16, 80, 87);
             }
-
             a:visited {
               color: rgb(10, 50, 54);
             }
-
             a:hover {
               color: rgb(12, 225, 245);
               /*TODO: add an on hover color animation*/
@@ -39,7 +37,6 @@
             p {
                 margin-bottom: 0;
             }
-
             p + p {
                 text-indent:1.3em;
                 margin-top: 1.3em;
@@ -53,49 +50,127 @@
             }
 
             .firstLetter {
-            	font-size: 80px;
-				padding-right: 10px;
-				border-bottom: solid black 2px;
-				border-top: solid black 2px;
-				padding-left: 10px;
+            	font-size: 4em;
+				font-style: italic;
             }
 
-            footer {
-				font-family: Verdana, sans-serif;
-                margin-top: 5em;
-                margin-bottom: 5em;
-                color: grey;
-                font-size: 0.4em;
+			.opening:first-line { line-height: 100%; }
+
+			.amp {
+				font-style: italic;
+				font-weight: normal;
+			}
+
+			.sectionSeparator {
+				text-align: center;
+				text-indent:0em;
+			}
+			.sectionSeparator:last-child {
+				margin-bottom: 1em;
+			}
+
+			.links {
+				list-style: none;
+				padding: 0px;
+			}
+			.links li:before
+			{
+				content: '☞';
+				margin: 0 1.3em;    /* Margin should be the same as in the paragraphs */
+			}
+
+			.finalNotes {
+				font-size: 0.7em;
             }
 
-			footer .heart {
+			.heart {
 				color: red;
 			}
+			.finalNotes h3 {
+				font-style: italic;
+				text-align: center;
+				text-indent: 0em;
+				margin-top: 1.3em;
+				font-size: inherit;
+			}
+			.refs {
+				list-style: none;
+				padding: 0px;
+			}
+			.refs li:nth-child(1):before
+			{
+				margin: 0 1.3em;    /* Margin should be the same as in the paragraphs */
+				content: '†';
+			}
+			.refs li:nth-child(2):before
+			{
+				margin: 0 1.3em;    /* Margin should be the same as in the paragraphs */
+				content: '‡';
+			}
+			.finalNotes p + p {
+                margin-top: 0.7em;
+				text-indent: 0em;
+            }
+			.aboutMe {
+				text-align: center;
+			}
+
+			/*TODO: Idead animate the fleuron, the section separators and the heart on hover to have a collor*/
+
+
         </style>
     </head>
     <body>
         <div class="main">
             <h1>Hello stranger!</h1>
 
-            <p><span class="firstLetter">T</span><span id="x1">h</span>is is my, mostly empty, personal homepage.</p>
-            <p style="margin-top: 0.5em;">W<span id="x2">e</span>ll you probably came here looking for something, so here are some links:</p>
+            <p class="opening"><span class="firstLetter">T</span>his is my, mostly empty, personal homepage. Look at all this white space ( ︶︿︶ )</p>
+
+            <p>&#10086; Well, you probably came here looking for something, so here are some links:</p>
             <p>
-                <ul>
-                    <li><a href="https://github.com/lfac-pt">Github</a></li>
-                    <li><a href="https://twitter.com/lfacpt">Twitter</a></li>
-                    <li><a href="http://pt.linkedin.com/in/lfacc">Linkedin</a></li>
+                <ul class="links">
+                    <li><a href="https://github.com/lfac-pt" target="_blank">Github</a></li>
+                    <li><a href="https://twitter.com/lfacpt" target="_blank">Twitter</a></li>
+                    <li><a href="http://pt.linkedin.com/in/lfacc" target="_blank">Linkedin</a></li>
                 </ul>
             </p>
-            <p>Also, I ocasionally take some (amateur) photos, you can check them <span id="y1">o</span>ut in my <a href="http://lfac.vsco.co/">VSCO stream</a>.</p>
-            <p>N<span id="y2">o</span>t satisfied yet? What more can I say? What I do for a living? Hum, I suppose thats a good start.</p>
-            <p>I'm a front-end &amp; JavaScript developer at <a href="http://www.feedzai.com/">FeedZai</a>, where I'm helping to build a quite large single page web application that is the face of our product.</p>
-            <p>Also, I'm quite a fan of reading spy thrillers, going to the movies, and... Wait, I shouldn't be disclosing personal information to strangers!</p>
-            <p>Are you trying to guess the answer to my secret question to access one of my accounts? STOP IT! You are not going to guess it anyways (random char string, FYI) so good luck with that.</p>
-        </div>
+            <p>&#10086; Also, I ocasionally take some photos<sup>&dagger;</sup>, you can check out a selection of them in my <a href="http://lfac.vsco.co/" target="_blank">VSCO stream</a>.</p>
 
-        <footer>
-            Made in Portugal with <span class="heart">♥</span> by me. Last updated at August 2014.
-        </footer>
+            <p class="sectionSeparator">&#8258;</p>
+
+            <p>&#10086; Not satisfied yet? What more can I say? What I do for a living? Hum, I suppose that is a good start.</p>
+            <p>&#10086; I'm a front-end <span class="amp">&amp;</span> JavaScript developer<sup>&Dagger;</sup> at <a href="http://www.feedzai.com/">FeedZai</a>, where I'm helping to build a quite large single page web application that is the face of our product.</p>
+
+          	<p class="sectionSeparator">&#8258;</p>
+
+            <p>&#10086; Also, I'm quite a fan of reading spy thrillers, going to the movies, and... Wait, I shouldn't be disclosing personal information to strangers!</p>
+            <p>&#10086; Are you trying to guess the answer to my secret question to access one of my accounts‽ STOP IT! You are not going to guess it anyways (random string of gibberish, FYI) so good luck with that.</p>
+
+            <p class="sectionSeparator">&loz;</p>
+
+            <div class="finalNotes">
+            	<h3>&sect; Notes &sect;</h3>
+
+				<p>
+					<ul class="refs">
+						<li>Photos may be amateurish and/or boring. NO GARANTEES are made regarding entertainment and/or educational value.</li>
+						<li>More precisely, lead front-end developer.</li>
+					</ul>
+				</p>
+
+				<h3>&sect; Abouth The Author &sect;</h3>
+
+				<p class="aboutMe">
+					Designed and handmade in Portugal with <span class="heart">♥</span> by me.
+				</p>
+
+           		<p class="aboutMe">
+					Last update at August 2014.
+				</p>
+            </div>
+
+            <p class="sectionSeparator">&Omega;</p>
+        </div>
 
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
