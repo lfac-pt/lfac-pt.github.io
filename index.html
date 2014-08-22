@@ -54,6 +54,10 @@
                 text-align: left;
             }
 
+			sup a {
+				text-decoration: none;
+			}
+
             .firstLetter {
             	font-size: 4em;
 				font-style: italic;
@@ -104,13 +108,30 @@
 			}
 			.refs li:nth-child(1):before
 			{
-				margin: 0 1.3em;    /* Margin should be the same as in the paragraphs */
+				margin-left: 1.9em;
+				margin-right: 2.4em;
+				width: 0.8em;
+				display: inline-block;
+				text-align: center;
 				content: '†';
 			}
 			.refs li:nth-child(2):before
 			{
-				margin: 0 1.3em;    /* Margin should be the same as in the paragraphs */
+				margin-left: 1.9em;
+				margin-right: 2.4em;
+				width: 0.8em;
+				display: inline-block;
+				text-align: center;
 				content: '‡';
+			}
+			.refs li:nth-child(3):before
+			{
+				margin-left: 1.9em;
+				margin-right: 2.4em;
+				width: 0.8em;
+				display: inline-block;
+				text-align: center;
+				content: '※';
 			}
 			.finalNotes p + p {
                 margin-top: 0.7em;
@@ -139,24 +160,29 @@
                     <li><a href="http://pt.linkedin.com/in/lfacc" target="_blank">Linkedin</a></li>
                 </ul>
             </p>
-            <p>&#10086; Also, in case you are interested, I ocasionally take some photos<sup>&dagger;</sup> and you can check out a selection of them in my <a href="http://lfac.vsco.co/" target="_blank">VSCO stream</a>.</p>
+            <p>&#10086; Also, in case you are interested, I ocasionally take some photos<sup><a href="#note1">&dagger;</a></sup> and you can check out a selection of them in my <a href="http://lfac.vsco.co/" target="_blank">VSCO stream</a>.</p>
 
             <p class="sectionSeparator">&#8258;</p>
 
             <p>&#10086; Not satisfied yet? What more can I say? What I do for a living? Hum, I suppose that is a good start.</p>
-            <p>&#10086; I'm a front-end <span class="amp">&amp;</span> JavaScript developer<sup>&Dagger;</sup> at <a href="http://www.feedzai.com/">FeedZai</a>, where I'm helping to build a quite large single page web application that is the face of our product.</p>
+            <p>&#10086; I'm a front-end <span class="amp">&amp;</span> JavaScript developer<sup><a href="#note2">&Dagger;</a></sup> at <a href="http://www.feedzai.com/">FeedZai</a>, where I'm helping to build a quite large single page web application that is the face of our product.</p>
 
           	<p class="sectionSeparator">&#8258;</p>
 
             <p>&#10086; Also, I'm quite a fan of reading spy thrillers, going to the movies, and... Wait, I shouldn't be disclosing personal information to strangers!</p>
 
-            <p class="sectionSeparator">ಠ_ಠ</p>
+            <p class="sectionSeparator">⚆ _ ⚆</p>
 
             <p>&#10086; Are you trying to guess the answer to my secret question to access one of my accounts‽</p>
 
+          	<p class="sectionSeparator">ಠ_ಠ</p>
+
+
+            <p>&#10086; STOP IT!</p>
+
             <p class="sectionSeparator">(ง'̀-'́)ง</p>
 
-            <p>&#10086; STOP IT! You are not going to guess it anyways (random string of gibberish, FYI) so good luck with that.</p>
+            <p>&#10086; You are not going to guess it anyways (random string of gibberish, all of them) so good luck with that.</p>
 
             <p class="sectionSeparator">&loz;</p>
 
@@ -165,8 +191,9 @@
 
 				<p>
 					<ul class="refs">
-						<li>Photos may be amateurish and/or boring. NO GARANTEES are made regarding entertainment and/or educational value.</li>
-						<li>More precisely, lead front-end developer.</li>
+						<li id="note1">Photos may be amateurish and/or boring. NO GARANTEES are made regarding entertainment and/or educational value.</li>
+						<li id="note2">More precisely, lead front-end developer.</li>
+						<li>ASCII art courtesy of <a href="https://www.npmjs.org/package/cool-ascii-faces">cool-ascii-faces</a></li>
 					</ul>
 				</p>
 
