@@ -36,7 +36,6 @@
             }
             a:hover {
               color: rgb(12, 225, 245);
-              /*TODO: add an on hover color animation*/
             }
 
             p {
@@ -48,7 +47,6 @@
             }
 
             .main {
-              /*TODO: improve on the side appears in the iPhone*/
                 width: 29em;
                 display: inline-block;
                 text-align: left;
@@ -68,6 +66,10 @@
 			.amp {
 				font-style: italic;
 				font-weight: normal;
+			}
+
+			.face {
+				white-space: nowrap;
 			}
 
 			.sectionSeparator {
@@ -141,9 +143,17 @@
 				text-align: center;
 			}
 
-			/*TODO: Idead animate the fleuron, the section separators and the heart on hover to have a collor*/
+			@media (max-width: 480px) {
+				h1 {
+					font-size: 3em;
+					margin-top: 1em;
+					margin-bottom: 1em;
+				}
 
-
+				.main {
+					width: 100%;
+				}
+			}
         </style>
     </head>
     <body>
@@ -164,7 +174,7 @@
 
             <h2>&#9832</h2>
 
-            <p class="opening"><span class="firstLetter">T</span>his is my, mostly empty, personal homepage. Look at all this white space ( ︶︿︶ )</p>
+            <p class="opening"><span class="firstLetter">T</span>his is my, mostly empty, personal homepage. Look at all this white space <span class="face">( ︶︿︶ )</span></p>
 
             <p>&#10086; Well, you probably came here looking for something, so here, have some links:</p>
             <p>
@@ -185,16 +195,16 @@
 
             <p>&#10086; Also, I'm quite a fan of reading spy thrillers, going to the movies, and... Wait, I shouldn't be disclosing personal information to strangers!</p>
 
-            <p class="sectionSeparator">⚆ _ ⚆</p>
+            <p class="sectionSeparator"><span class="face">⚆ _ ⚆</span></p>
 
             <p>&#10086; Are you trying to guess the answer to my secret question to access one of my accounts‽</p>
 
-          	<p class="sectionSeparator">ಠ_ಠ</p>
+          	<p class="sectionSeparator"><span class="face">ಠ_ಠ</span></p>
 
 
             <p>&#10086; STOP IT</p>
 
-            <p class="sectionSeparator">(ง'̀-'́)ง</p>
+            <p class="sectionSeparator"><span class="face">(ง'̀-'́)ง</span></p>
 
             <p>&#10086; You are not going to guess it anyways (random string of gibberish, all of them) so good luck with that.</p>
 
